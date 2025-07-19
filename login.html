@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2 class="text-center mb-4">Đăng nhập Streamline English</h2>
+        <div id="alertMessage" class="alert alert-danger d-none" role="alert"></div>
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">Tên người dùng</label>
+                <input type="text" class="form-control" id="username" required />
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Ngăn chặn form submit mặc định
+
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+            const alertMessage = document.getElementById('alertMessage');
+
+            // Danh sách người dùng và mật khẩu (ví dụ)
+            const users = {
+                "hocsinh1": "matkhau1",
+                "hocsinh2": "matkhau2",
+                "hocsinh3": "matkhau3",
+                "hocsinh4": "matkhau4"
+            };
+
+            if (users[usernameInput] === passwordInput) {
+                // Đăng nhập thành công, chuyển hướng đến trang chính
+                window.location.href = 'index.html'; // Thay 'index.html' bằng tên file trang web của bạn
+            } else {
+                alertMessage.textContent = 'Tên người dùng hoặc mật khẩu không đúng.';
+                alertMessage.classList.remove('d-none'); // Hiển thị thông báo lỗi
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
