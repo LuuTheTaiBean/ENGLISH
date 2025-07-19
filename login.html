@@ -37,15 +37,13 @@
                 .then(users => {
                     const user = users.find(u => u.username === username && u.password === password);
                     if (user) {
-                        // Lưu thông tin vào localStorage nếu muốn dùng sau
-                        localStorage.setItem("loggedInUser", JSON.stringify(user));
-                        // Chuyển hướng sang index.html
+                        // Không lưu vào localStorage — chuyển hướng trực tiếp
                         window.location.href = "index.html";
                     } else {
                         document.getElementById("alertBox").classList.remove("d-none");
                     }
                 })
-                .catch(err => console.error("Lỗi tải dữ liệu:", err));
+                .catch(err => console.error("Lỗi tải users.json:", err));
         }
 
     </script>

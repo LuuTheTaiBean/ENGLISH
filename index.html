@@ -82,8 +82,8 @@
 
   <script>
 
-    const user = localStorage.getItem("loggedInUser");
-    if (!user) {
+    if (!document.referrer.includes("login.html")) {
+      // alert("Vui lòng đăng nhập trước.");
       window.location.href = "login.html";
     }
 
