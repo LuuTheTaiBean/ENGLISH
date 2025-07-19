@@ -2,11 +2,13 @@
   {
     "username": "hoangvanabc",
     "password": "123456",
-    "fullname": "Hoàng Văn ABC"
+    "fullname": "Hoàng Văn ABC",
+    "phone": ""
   },
   {
     "username": "tranthithao",
     "password": "abc123",
-    "fullname": "Trần Thị Thảo"
+    "fullname": "Trần Thị Thảo",
+    "phone": ""
   }
 ]
