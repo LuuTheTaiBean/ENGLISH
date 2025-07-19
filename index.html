@@ -81,6 +81,12 @@
   </div>
 
   <script>
+
+    const user = localStorage.getItem("loggedInUser");
+    if (!user) {
+      window.location.href = "login.html";
+    }
+
     // ... các biến hiện có của bạn
     let currentAudio = new Audio();
     let stopAt = null;
