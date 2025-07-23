@@ -62,6 +62,13 @@
     "image": "./img/1_42.svg",
     "audio": "./00 Audio/1_42.mp3"
   },
+  {
+    "book": "book1",
+    "unit": "44: Return from Space",
+    "lyrics": "./00 Lyrics/1_44.lrc",
+    "image": "./img/1_44.svg",
+    "audio": "./00 Audio/1_44.mp3"
+  },
 
   {
     "book": "book2",
