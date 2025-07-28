@@ -1,0 +1,115 @@
+[
+  {
+    "book": "book1",
+    "unit": "01: Hello",
+    "lyrics": "./00 Lyrics/1_01.lrc",
+    "image": "./img/1_01.svg",
+    "audio": "./00 Audio/1_01.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "02: Excuse me",
+    "lyrics": "./00 Lyrics/1_02.lrc",
+    "image": "./img/1_02.svg",
+    "audio": "./00 Audio/1_02.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "13: Elton Kash",
+    "lyrics": "./00 Lyrics/1_13.lrc",
+    "image": "./img/1_13.svg",
+    "audio": "./00 Audio/1_13.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "17: At the customs",
+    "lyrics": "./00 Lyrics/1_17.lrc",
+    "image": "./img/1_17.svg",
+    "audio": "./00 Audio/1_17.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "22: Can you help me?",
+    "lyrics": "./00 Lyrics/1_22.lrc",
+    "image": "./img/1_22.svg",
+    "audio": "./00 Audio/1_22.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "27: In prison",
+    "lyrics": "./00 Lyrics/1_27.lrc",
+    "image": "./img/1_27.svg",
+    "audio": "./00 Audio/1_27.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "32: An interview",
+    "lyrics": "./00 Lyrics/1_32.lrc",
+    "image": "./img/1_32.svg",
+    "audio": "./00 Audio/1_32.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "37: What does he do every day?",
+    "lyrics": "./00 Lyrics/1_37.lrc",
+    "image": "./img/1_37.svg",
+    "audio": "./00 Audio/1_37.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "41: Where were you yesterday?",
+    "lyrics": "./00 Lyrics/1_41.lrc",
+    "image": "./img/1_41.svg",
+    "audio": "./00 Audio/1_41.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "42: Holidays",
+    "lyrics": "./00 Lyrics/1_42.lrc",
+    "image": "./img/1_42.svg",
+    "audio": "./00 Audio/1_42.mp3"
+  },
+  {
+    "book": "book1",
+    "unit": "44: Return from Space",
+    "lyrics": "./00 Lyrics/1_44.lrc",
+    "image": "./img/1_44.svg",
+    "audio": "./00 Audio/1_44.mp3"
+  },
+
+  {
+    "book": "book2",
+    "unit": "01: All Aboard",
+    "lyrics": "./00 Lyrics/2_01.lrc",
+    "image": "./img/2_01.svg",
+    "audio": "./00 Audio/2_01.mp3"
+  },
+  {
+    "book": "book2",
+    "unit": "04: Olympic Report ",
+    "lyrics": "./00 Lyrics/2_04.lrc",
+    "image": "./img/2_04.svg",
+    "audio": "./00 Audio/2_04.mp3"
+  },
+  {
+    "book": "book2",
+    "unit": "30: The bad boy of British football",
+    "lyrics": "./00 Lyrics/2_30.lrc",
+    "image": "./img/2_30.svg",
+    "audio": "./00 Audio/2_30.mp3"
+  },
+  {
+    "book": "book2",
+    "unit": "36: The smuggler",
+    "lyrics": "./00 Lyrics/2_36.lrc",
+    "image": "./img/2_36.svg",
+    "audio": "./00 Audio/2_36.mp3"
+  },
+  {
+    "book": "book2",
+    "unit": "42: The empty chair",
+    "lyrics": "./00 Lyrics/2_42.lrc",
+    "image": "./img/2_42.svg",
+    "audio": "./00 Audio/2_42.mp3"
+  }
+]

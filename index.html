@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamline English</title>
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container-fluid d-flex p-0">
+    <div class="col-md-2 sidebar border-end vh-100 overflow-auto d-none d-md-block">
+      <ul class="list-unstyled">
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book1')">Streamline English 1</li>
+        <ul id="book1" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book2')">Streamline English 2</li>
+        <ul id="book2" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book3')">Streamline English 3</li>
+        <ul id="book3" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book4')">Streamline English 4</li>
+        <ul id="book4" class="list-unstyled d-none"></ul>
+      </ul>
+    </div>
+
+    <button class="btn btn-success position-fixed top-0 end-0 m-3 d-md-none" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#bookOffcanvas" aria-controls="bookOffcanvas">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-end w-75 bg-primary" tabindex="-1" id="bookOffcanvas"
+      aria-labelledby="bookOffcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="bookOffcanvasLabel">Streamline English</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-0">
+        <ul class="list-unstyled">
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book1-offcanvas')">Streamline English 1</li>
+          <ul id="book1-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book2-offcanvas')">Streamline English 2</li>
+          <ul id="book2-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book3-offcanvas')">Streamline English 3</li>
+          <ul id="book3-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book4-offcanvas')">Streamline English 4</li>
+          <ul id="book4-offcanvas" class="list-unstyled d-none"></ul>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-9 p-3">
+      <div id="units-container"></div>
+    </div>
+
+    <div
+      class="col-md-1 border-start vh-100 d-flex flex-column justify-content-between align-items-center p-3 d-none d-md-flex">
+      <div></div>
+      <div class="icon play-pause-btn"><i class="fa-solid fa-play"></i></div>
+      <div class="icon"><i class="fa-solid fa-repeat"></i></div>
+      <div class="icon"><i class="fa-solid fa-book-open-reader"></i></div>
+      <div class="icon"><i class="fa-solid fa-microphone"></i></div>
+      <div class="icon"><i class="fa-solid fa-folder-closed"></i></div>
+      <div class="logo">
+        <a href="https://luuthetaibean.github.io/app/"> <img src="./img/logo.svg" alt="Logo" /></a>
+
+      </div>
+    </div>
+
+    <div class="d-md-none fixed-bottom bg-primary d-flex justify-content-around p-3">
+      <div class="icon play-pause-btn">
+        <i class="fa-solid fa-play" id="mobile-play-pause-icon"></i>
+      </div>
+      <div class="icon"><i class="fa-solid fa-repeat"></i></div>
+      <div class="icon"><i class="fa-solid fa-microphone"></i></div>
+      <div class="icon"><i class="fa-solid fa-book-open-reader"></i></div>
+      <div class="icon"><i class="fa-solid fa-folder-closed"></i></div>
+    </div>
+  </div>
+
+  <script>
+
+    if (!document.referrer.includes("login.html")) {
+      window.location.href = "login.html";
+    }
+
+
+    // ... các biến hiện có của bạn
+    let currentAudio = new Audio();
+    let stopAt = null;
+    let isManualPlay = false;
+
+    // Thêm biến này để theo dõi số lần lặp lại
+    let repeatCount = 0; // 0: không lặp, 1: lặp 1 lần, 2: lặp 2 lần, v.v.
+
+    const playPauseButton = document.querySelector(".play-pause-btn");
+    const playPauseIcon = playPauseButton.querySelector("i");
+    const mobilePlayPauseIcon = document.getElementById("mobile-play-pause-icon");
+
+    // Lấy icon lặp lại
+    const repeatButton = document.querySelector(".fa-repeat").closest(".icon");
+    const mobileRepeatButton = document.querySelector(".fixed-bottom .fa-repeat").closest(".icon");
+
+    playPauseButton.addEventListener("click", togglePlayPause);
+    mobilePlayPauseIcon.addEventListener("click", togglePlayPause);
+
+    // Thêm sự kiện click cho nút lặp lại
+    repeatButton.addEventListener("click", toggleRepeat);
+    mobileRepeatButton.addEventListener("click", toggleRepeat);
+
+    function togglePlayPause() {
+      if (currentAudio.src) {
+        if (currentAudio.paused) {
+          currentAudio.play().then(() => {
+            updatePlayPauseIcon(true);
+            isManualPlay = false;
+            stopAt = null;
+            repeatCount = 0; // Khi người dùng play thủ công, reset lặp lại
+          }).catch(err => {
+            console.error("Không thể phát audio:", err);
+          });
+        } else {
+          currentAudio.pause();
+          updatePlayPauseIcon(false);
+        }
+      }
+    }
+
+    function updatePlayPauseIcon(isPlaying) {
+      const iconClass = isPlaying ? "fa-pause" : "fa-play";
+
+      const desktopIcon = document.querySelector(".play-pause-btn i");
+      const mobileIcon = document.getElementById("mobile-play-pause-icon");
+
+      if (desktopIcon) {
+        desktopIcon.classList.remove("fa-play", "fa-pause");
+        desktopIcon.classList.add(iconClass);
+      }
+
+      if (mobileIcon) {
+        mobileIcon.classList.remove("fa-play", "fa-pause");
+        mobileIcon.classList.add(iconClass);
+      }
+    }
+
+    // Hàm xử lý khi ấn nút lặp lại
+    function toggleRepeat() {
+      repeatCount++; // Tăng số lần lặp
+
+      // Bạn có thể giới hạn số lần lặp nếu muốn, ví dụ chỉ lặp tối đa 3 lần
+      // if (repeatCount > 3) {
+      //     repeatCount = 0; // Trở về không lặp
+      // }
+
+      // Cập nhật giao diện để người dùng biết đang lặp bao nhiêu lần
+      updateRepeatIcon();
+      console.log("Số lần lặp: " + repeatCount);
+    }
+
+    // Hàm cập nhật icon lặp lại (ví dụ: thêm số bên cạnh icon)
+    function updateRepeatIcon() {
+      // Xóa các span số cũ nếu có
+      document.querySelectorAll('.icon .repeat-badge').forEach(badge => badge.remove());
+
+      if (repeatCount > 0) {
+        const desktopRepeatIcon = repeatButton.querySelector('i');
+        const mobileRepeatIcon = mobileRepeatButton.querySelector('i');
+
+        const createBadge = (iconElement) => {
+          if (iconElement) {
+            const badge = document.createElement('span');
+            badge.className = 'repeat-badge position-absolute translate-middle badge rounded-sm bg-success';
+            badge.textContent = repeatCount;
+            // Đặt vị trí badge tương đối với icon
+            iconElement.style.position = 'relative'; // Đảm bảo icon có position để badge đặt đúng
+            badge.style.top = '0';
+            badge.style.right = '0';
+            iconElement.appendChild(badge);
+          }
+        };
+        createBadge(desktopRepeatIcon);
+        createBadge(mobileRepeatIcon);
+      }
+    }
+
+
+    function toggleSubList(bookId) {
+      const subList = document.getElementById(bookId);
+      subList.classList.toggle("d-none");
+    }
+    currentAudio.addEventListener("ended", () => {
+      if (repeatCount > 0) {
+        currentAudio.currentTime = 0; // Quay về đầu bài
+        currentAudio.play(); // Phát lại
+        repeatCount--; // Giảm số lần lặp
+        updateRepeatIcon(); // Cập nhật icon
+      } else {
+        updatePlayPauseIcon(false); // Dừng lại nếu không còn lặp
+      }
+    });
+
+    fetch("data.json")
+      .then(res => res.json())
+      .then(data => {
+        const books = {
+          book1: [],
+          book2: [],
+          book3: [],
+          book4: []
+        };
+        data.forEach(item => books[item.book]?.push(item));
+
+        Object.keys(books).forEach(book => {
+          const bookList = document.getElementById(book);
+          const bookCanvas = document.getElementById(book + "-offcanvas");
+
+          books[book].forEach(item => {
+            const createItem = (container) => {
+              const li = document.createElement("li");
+              li.textContent = item.unit;
+              li.className = "p-2 border-bottom";
+              li.addEventListener("click", () => loadUnitContent(item));
+              container.appendChild(li);
+            };
+            createItem(bookList);
+            createItem(bookCanvas);
+          });
+        });
+
+        function loadUnitContent(item) {
+          fetchLyrics(item.lyrics).then((lyricsData) => {
+            document.getElementById("units-container").innerHTML = `
+                    <div class="container">
+                        <h2 class="text-center fw-bold"> Unit ${item.unit}</h2>
+                        <div class="row">
+                            <div class="col-md-7 d-flex justify-content-center align-items-center">
+                                <img src="${item.image}" class="img-fluid" alt="${item.alt}" loading="lazy" />
+                            </div>
+                            <div class="col-md-5 mb-4 mb-md-0 d-flex align-items-center">
+                                <div id="lyrics-container" class="lyrics-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            currentAudio.src = item.audio;
+            currentAudio.pause();
+            stopAt = null;
+            updatePlayPauseIcon(false);
+            isManualPlay = false;
+            repeatCount = 0; // Reset lặp lại khi tải Unit mới
+            updateRepeatIcon(); // Cập nhật icon lặp lại
+            displayLyrics(lyricsData);
+          });
+        }
+
+        function fetchLyrics(path) {
+          return fetch(path)
+            .then(res => res.text())
+            .then(text => parseLyrics(text))
+            .catch(() => []);
+        }
+
+        function parseLyrics(text) {
+          return text.split(/\r?\n/).map(line => {
+            const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
+            if (match) {
+              const time = parseInt(match[1]) * 60 + parseFloat(match[2]);
+              const text = match[3].replace(/\\n/g, "<br>");
+              return {
+                time,
+                text
+              };
+            }
+            return null;
+          }).filter(line => line !== null);
+        }
+
+        function displayLyrics(lyricsData) {
+          const container = document.getElementById("lyrics-container");
+          container.innerHTML = lyricsData
+            .map((line) => `<p data-time="${line.time}">${line.text}</p>`)
+            .join("");
+
+          currentAudio.removeEventListener("timeupdate", handleTimeUpdate);
+          currentAudio.addEventListener("timeupdate", handleTimeUpdate);
+
+          function handleTimeUpdate() {
+            const currentTime = currentAudio.currentTime;
+            let activeLine = null;
+
+            if (!isManualPlay) {
+              lyricsData.forEach((line, index) => {
+                const nextLine = lyricsData[index + 1];
+                if (currentTime >= line.time && (!nextLine || currentTime < nextLine.time)) {
+                  activeLine = document.querySelector(`p[data-time="${line.time}"]`);
+                }
+              });
+
+              container.querySelectorAll("p").forEach(p => p.classList.remove("active"));
+              if (activeLine) {
+                activeLine.classList.add("active");
+                activeLine.scrollIntoView({
+                  behavior: "smooth", // cuộn mượt
+                  block: "center"     // đưa dòng active vào giữa khung
+                });
+              }
+
+            }
+
+            if (stopAt !== null && currentTime >= stopAt) {
+              currentAudio.pause();
+              stopAt = null;
+              updatePlayPauseIcon(false);
+              // isManualPlay = true; // Giữ isManualPlay là true khi dừng 1 câu
+            }
+          }
+
+          container.querySelectorAll("p").forEach((p, index) => {
+            p.addEventListener("click", () => {
+              const start = parseFloat(p.dataset.time);
+              const nextLine = lyricsData[index + 1];
+              stopAt = nextLine ? nextLine.time : null;
+
+              currentAudio.currentTime = start;
+              currentAudio.play();
+              updatePlayPauseIcon(true);
+              container.querySelectorAll("p").forEach(el => el.classList.remove("active"));
+              p.classList.add("active");
+              isManualPlay = true;
+              repeatCount = 0;
+              updateRepeatIcon();
+            });
+          });
+        }
+      })
+      .catch(err => console.error("Lỗi tải dữ liệu:", err));
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
