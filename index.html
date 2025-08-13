@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
-  <title>Streamline English</title>
+  <title>English</title>
   <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
@@ -24,6 +24,18 @@
         <ul id="book3" class="list-unstyled d-none"></ul>
         <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book4')">Streamline English 4</li>
         <ul id="book4" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book5')">Level 1</li>
+        <ul id="book5" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book6')">Level 2</li>
+        <ul id="book6" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book7')">Level 3</li>
+        <ul id="book7" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book8')">Streamline English 8</li>
+        <ul id="book8" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book9')">Streamline English 9</li>
+        <ul id="book9" class="list-unstyled d-none"></ul>
+        <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book10')">Streamline English 10</li>
+        <ul id="book10" class="list-unstyled d-none"></ul>
       </ul>
     </div>
 
@@ -48,6 +60,19 @@
           <ul id="book3-offcanvas" class="list-unstyled d-none"></ul>
           <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book4-offcanvas')">Streamline English 4</li>
           <ul id="book4-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book5-offcanvas')">Level 1</li>
+          <ul id="book5-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book6-offcanvas')">Level 2</li>
+          <ul id="book6-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book7-offcanvas')">Level 3</li>
+          <ul id="book7-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book8-offcanvas')">Streamline English 8</li>
+          <ul id="book8-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book9-offcanvas')">Streamline English 9</li>
+          <ul id="book9-offcanvas" class="list-unstyled d-none"></ul>
+          <li class="sticky-title p-3 bg-success" onclick="toggleSubList('book10-offcanvas')">Streamline English 10</li>
+          <ul id="book10-offcanvas" class="list-unstyled d-none"></ul>
+
         </ul>
       </div>
     </div>
@@ -209,14 +234,44 @@
           book1: [],
           book2: [],
           book3: [],
-          book4: []
+          book4: [],
+          book5: [],
+          book6: [],
+          book7: [],
+          book8: [],
+          book9: [],
+          book10: []
         };
         data.forEach(item => books[item.book]?.push(item));
 
+        // Không sắp xếp theo số Unit
+        // Object.keys(books).forEach(book => {
+        //   const bookList = document.getElementById(book);
+        //   const bookCanvas = document.getElementById(book + "-offcanvas");
+
+        //   books[book].forEach(item => {
+        //     const createItem = (container) => {
+        //       const li = document.createElement("li");
+        //       li.textContent = item.unit;
+        //       li.className = "p-2 border-bottom";
+        //       li.addEventListener("click", () => loadUnitContent(item));
+        //       container.appendChild(li);
+        //     };
+        //     createItem(bookList);
+        //     createItem(bookCanvas);
+        //   });
+        // });
+
+
+        // Sắp xếp theo số Unit
         Object.keys(books).forEach(book => {
           const bookList = document.getElementById(book);
           const bookCanvas = document.getElementById(book + "-offcanvas");
-
+          books[book].sort((a, b) => {
+            const numA = parseInt(a.unit.replace(/\D/g, "")) || 0;
+            const numB = parseInt(b.unit.replace(/\D/g, "")) || 0;
+            return numA - numB;
+          });
           books[book].forEach(item => {
             const createItem = (container) => {
               const li = document.createElement("li");
