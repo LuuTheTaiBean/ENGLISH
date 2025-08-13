@@ -142,10 +142,38 @@
     "audio": "00 Audio/Policeman is like a dog 1.mp3"
   },
   {
+    "book": "book6",
+    "unit": "Policeman is like a dog",
+    "lyrics": "./00 Lyrics/Policeman is like a dog 2.lrc",
+    "image": "./img/Policeman is like a dog.svg",
+    "audio": "00 Audio/Policeman is like a dog 2.mp3"
+  },
+  {
+    "book": "book7",
+    "unit": "Policeman is like a dog",
+    "lyrics": "./00 Lyrics/Policeman is like a dog 3.lrc",
+    "image": "./img/Policeman is like a dog.svg",
+    "audio": "00 Audio/Policeman is like a dog 3.mp3"
+  },
+  {
     "book": "book5",
     "unit": "Japanese government sells cheap rice",
     "lyrics": "./00 Lyrics/Japanese government sells cheap rice 1.lrc",
     "image": "./img/Japanese government sells cheap rice.svg",
     "audio": "00 Audio/Japanese government sells cheap rice 1.mp3"
+  },
+  {
+    "book": "book6",
+    "unit": "Japanese government sells cheap rice",
+    "lyrics": "./00 Lyrics/Japanese government sells cheap rice 2.lrc",
+    "image": "./img/Japanese government sells cheap rice.svg",
+    "audio": "00 Audio/Japanese government sells cheap rice 2.mp3"
+  },
+  {
+    "book": "book7",
+    "unit": "Japanese government sells cheap rice",
+    "lyrics": "./00 Lyrics/Japanese government sells cheap rice 3.lrc",
+    "image": "./img/Japanese government sells cheap rice.svg",
+    "audio": "00 Audio/Japanese government sells cheap rice 3.mp3"
   }
 ]

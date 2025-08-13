@@ -267,11 +267,7 @@
         Object.keys(books).forEach(book => {
           const bookList = document.getElementById(book);
           const bookCanvas = document.getElementById(book + "-offcanvas");
-          books[book].sort((a, b) => {
-            const numA = parseInt(a.unit.replace(/\D/g, "")) || 0;
-            const numB = parseInt(b.unit.replace(/\D/g, "")) || 0;
-            return numA - numB;
-          });
+          books[book].sort((a, b) => a.unit.localeCompare(b.unit, 'en', { numeric: false }));
           books[book].forEach(item => {
             const createItem = (container) => {
               const li = document.createElement("li");
