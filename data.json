@@ -133,5 +133,19 @@
     "lyrics": "./00 Lyrics/2_42.lrc",
     "image": "./img/2_42.svg",
     "audio": "./00 Audio/2_42.mp3"
+  },
+  {
+    "book": "book5",
+    "unit": "Policeman is like a dog",
+    "lyrics": "./00 Lyrics/Policeman is like a dog 1.lrc",
+    "image": "./img/Policeman is like a dog.svg",
+    "audio": "00 Audio/Policeman is like a dog 1.mp3"
+  },
+  {
+    "book": "book5",
+    "unit": "Japanese government sells cheap rice",
+    "lyrics": "./00 Lyrics/Japanese government sells cheap rice 1.lrc",
+    "image": "./img/Japanese government sells cheap rice.svg",
+    "audio": "00 Audio/Japanese government sells cheap rice 1.mp3"
   }
 ]
