@@ -1,6 +1,13 @@
 [
   {
     "book": "book1",
+    "unit": "-38: Well or badly?",
+    "lyrics": "./00 Lyrics/1_38.lrc",
+    "image": "./img/1_38.svg",
+    "audio": "./00 Audio/1_38.mp3"
+  },
+  {
+    "book": "book1",
     "unit": "01: Hello",
     "lyrics": "./00 Lyrics/1_01.lrc",
     "image": "./img/1_01.svg",
@@ -133,6 +140,27 @@
     "lyrics": "./00 Lyrics/2_42.lrc",
     "image": "./img/2_42.svg",
     "audio": "./00 Audio/2_42.mp3"
+  },
+  {
+    "book": "book5",
+    "unit": "-Ukraine wants to keep its land",
+    "lyrics": "./00 Lyrics/Ukraine wants to keep its land 1.lrc",
+    "image": "./img/Ukraine wants to keep its land.svg",
+    "audio": "00 Audio/Ukraine wants to keep its land 1.mp3"
+  },
+  {
+    "book": "book6",
+    "unit": "-Ukraine wants to keep its land",
+    "lyrics": "./00 Lyrics/Ukraine wants to keep its land 2.lrc",
+    "image": "./img/Ukraine wants to keep its land.svg",
+    "audio": "00 Audio/Ukraine wants to keep its land 2.mp3"
+  },
+  {
+    "book": "book7",
+    "unit": "-Ukraine wants to keep its land",
+    "lyrics": "./00 Lyrics/Ukraine wants to keep its land 3.lrc",
+    "image": "./img/Ukraine wants to keep its land.svg",
+    "audio": "00 Audio/Ukraine wants to keep its land 3.mp3"
   },
   {
     "book": "book5",
