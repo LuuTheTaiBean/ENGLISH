@@ -23,6 +23,13 @@
   },
   {
     "book": "book1",
+    "unit": "16: Gloria Gusto, Tom Atkins and Terry Archer",
+    "lyrics": "./00 Lyrics/1_16.lrc",
+    "image": "./img/1_16.svg",
+    "audio": "./00 Audio/1_16.mp3"
+  },
+  {
+    "book": "book1",
     "unit": "17: At the customs",
     "lyrics": "./00 Lyrics/1_17.lrc",
     "image": "./img/1_17.svg",
